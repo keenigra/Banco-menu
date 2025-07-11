@@ -10,12 +10,12 @@ void limpiarBuffer() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-// === Prototipos para evitar errores con friend ===
+
 class Cliente;
 void guardarDatos(const vector<Cliente>& clientes, const string& archivo);
 void cargarDatos(vector<Cliente>& clientes, const string& archivo);
 
-// === Clase Cuenta ===
+
 class Cuenta {
 private:
     string numeroCuenta;
@@ -74,12 +74,12 @@ public:
         return numeroCuenta;
     }
 
-    // Amigos para acceso desde funciones externas
+    
     friend void guardarDatos(const vector<Cliente>& clientes, const string& archivo);
     friend void cargarDatos(vector<Cliente>& clientes, const string& archivo);
 };
 
-// === Clase Cliente ===
+
 class Cliente {
 private:
     string nombre;
@@ -117,7 +117,7 @@ public:
     friend void cargarDatos(vector<Cliente>& clientes, const string& archivo);
 };
 
-// === Guardar datos ===
+
 void guardarDatos(const vector<Cliente>& clientes, const string& archivo) {
     ofstream out(archivo);
     for (const auto& cliente : clientes) {
@@ -133,7 +133,7 @@ void guardarDatos(const vector<Cliente>& clientes, const string& archivo) {
     }
 }
 
-// === Cargar datos ===
+
 void cargarDatos(vector<Cliente>& clientes, const string& archivo) {
     ifstream in(archivo);
     if (!in) return;
@@ -165,10 +165,10 @@ void cargarDatos(vector<Cliente>& clientes, const string& archivo) {
     }
 }
 
-// === Función principal ===
+
 int main() {
     vector<Cliente> clientes;
-    cargarDatos(clientes, "banco.txt"); // carga al iniciar
+    cargarDatos(clientes, "banco.txt");
 
     int opcion;
     do {
